@@ -4,21 +4,21 @@
 
 ---
 
-## Ready (High Priority)
+## Ready (High Priority) - AUTO-SCHEDULED
 
-- [ ] **Batch A Publish (First 5 Skills)**
+- [ ] **Batch A Publish (First 5 Skills)** - AUTO at 04:04
   - Skills: task-finish-contract, blocker-min-input, powershell-safe-chain, gateway-token-doctor, model-route-guard
-  - Earliest Time: 2026-03-01 04:04 (rate limit reset)
-  - Status: Attempted 03:26 - FAILED (rate limit)
+  - Scheduled: 2026-03-01 04:04 (Cron: 037018ec-1d96-4d73-b227-c3276ae2ff39)
+  - Status: AUTO-SCHEDULED (rate limit reset)
   - Done Criteria:
     - [ ] All 5 skills return "OK. Published"
     - [ ] skill_id recorded for each
     - [ ] URLs verified accessible
     - [ ] Results logged to memory/publish-queue-2026-03-01.md
 
-- [ ] **Batch B Publish (Last 5 Skills)**
+- [ ] **Batch B Publish (Last 5 Skills)** - AUTO at 05:04
   - Skills: evidence-url-verifier, clawhub-web-only-publish, memory-to-skill-crystallizer, weekly-self-improve-loop, prepublish-privacy-scrub
-  - Earliest Time: 2026-03-01 05:00 (1 hour after Batch A)
+  - Scheduled: 2026-03-01 05:04 (Cron: 8aba8e9b-394c-4537-aabe-d7af78af0c1a)
   - Done Criteria:
     - [ ] All 5 skills return "OK. Published"
     - [ ] skill_id recorded for each
