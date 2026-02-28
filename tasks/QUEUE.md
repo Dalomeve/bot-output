@@ -29,7 +29,27 @@
 
 ## In Progress
 
-- [ ] (none)
+- [ ] **Agent Audit Trail - Continuous Expansion** (Long-Running)
+  - Repository: https://github.com/Dalomeve/agent-audit-trail
+  - Status: Active (No endpoint)
+  - Daily Requirements:
+    - [ ] At least 1 verifiable improvement (code/test/doc/integration)
+    - [ ] Evidence: commit hash + verification command result
+    - [ ] If no code: high-quality research/analysis with next steps
+    - [ ] Privacy scan: no tokens/keys/personal data
+  - Done Criteria (Daily):
+    - [ ] Commit pushed to main branch
+    - [ ] Verification evidence recorded in memory/long-running-goals.md
+    - [ ] Next day's work planned
+  - Heartbeat Priority: Check daily progress
+
+---
+
+## Long-Running Goals
+
+| Goal | Started | Last Activity | Streak |
+|------|---------|---------------|--------|
+| Agent Audit Trail Expansion | 2026-03-01 | 2026-03-01 (Day 1) | 1 day |
 
 ---
 
