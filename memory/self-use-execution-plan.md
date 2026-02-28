@@ -86,10 +86,10 @@ Test-PrivacyScan -path $skillPath
 4. Apply `task-finish-contract` to first task
 
 ### During Work
-1. All PowerShell commands → `powershell-safe-chain`
-2. Any 401 error → `gateway-token-doctor`
-3. Any model failure → `model-route-guard`
-4. Task complete → `evidence-url-verifier`
+1. All PowerShell commands -> `powershell-safe-chain`
+2. Any 401 error -> `gateway-token-doctor`
+3. Any model failure -> `model-route-guard`
+4. Task complete -> `evidence-url-verifier`
 
 ### Before Any Publish
 1. Run `prepublish-privacy-scrub`

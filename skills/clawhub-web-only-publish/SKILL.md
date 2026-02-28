@@ -31,7 +31,7 @@ CLI login causes:
    - Slug: `skill-name`
    - Display name: `Skill Name`
    - Version: `1.0.0`
-4. Click "Choose folder" → Select skill directory
+4. Click "Choose folder" -> Select skill directory
 5. Wait for validation (SKILL.md recognized)
 6. (Optional) Add changelog
 7. Click "Publish skill"
