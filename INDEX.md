@@ -22,6 +22,7 @@ Centralized index of all bot task outputs organized by date.
 | memory-to-skill-crystallizer | [`skills/memory-to-skill-crystallizer/`](https://github.com/Dalomeve/bot-output/tree/main/skills/memory-to-skill-crystallizer) | Auto-convert memory lessons into reusable skills: detect patterns, generate skill files |
 | weekly-self-improve-loop | [`skills/weekly-self-improve-loop/`](https://github.com/Dalomeve/bot-output/tree/main/skills/weekly-self-improve-loop) | Weekly review of memory and blockers: extract friction patterns, create skills, report metrics |
 | prepublish-privacy-scrub | [`skills/prepublish-privacy-scrub/`](https://github.com/Dalomeve/bot-output/tree/main/skills/prepublish-privacy-scrub) | Scan and remove sensitive data before publishing: detect keys, tokens, secrets, personal info |
+| 任务收尾器 (ren-wu-shou-wei-qi) | [`skills/ren-wu-shou-wei-qi/`](https://github.com/Dalomeve/bot-output/tree/main/skills/ren-wu-shou-wei-qi) | 强制任务收尾与证据提交。确保每个任务都有明确的目标、进度、下一步和完成证据 (Chinese) |
 
 ## Outputs
 
