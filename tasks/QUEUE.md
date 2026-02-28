@@ -8,7 +8,8 @@
 
 - [ ] **Batch A Publish (First 5 Skills)**
   - Skills: task-finish-contract, blocker-min-input, powershell-safe-chain, gateway-token-doctor, model-route-guard
-  - Earliest Time: 2026-03-01 04:00 (rate limit reset)
+  - Earliest Time: 2026-03-01 04:04 (rate limit reset)
+  - Status: Attempted 03:26 - FAILED (rate limit)
   - Done Criteria:
     - [ ] All 5 skills return "OK. Published"
     - [ ] skill_id recorded for each

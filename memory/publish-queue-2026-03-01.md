@@ -71,8 +71,19 @@ clawhub publish "C:/Users/davemelo/.openclaw/workspace/bot-output/skills/prepubl
 
 ## Next Execution Time
 
-**Batch A**: 2026-03-01 04:00 (or when rate limit resets)
-**Batch B**: 2026-03-01 05:00 (or 1 hour after Batch A)
+**Batch A**: 2026-03-01 04:04 (1 hour from first publish at 03:04)
+**Batch B**: 2026-03-01 05:04 (1 hour after Batch A)
+
+---
+
+## Attempt Log
+
+### Attempt 1: 2026-03-01 03:26
+
+**Action**: Tried to publish task-finish-contract
+**Result**: FAILED - Rate limit still active
+**Error**: "Rate limit: max 5 new skills per hour"
+**Next Retry**: 2026-03-01 04:04 (38 minutes from now)
 
 ---
 
