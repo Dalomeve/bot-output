@@ -4,26 +4,17 @@
 
 ---
 
-## Ready (High Priority) - AUTO-SCHEDULED
+## Ready (High Priority) - SERIAL PUBLISH (1 skill / 2 min)
 
-- [ ] **Batch A Publish (First 5 Skills)** - AUTO at 04:04
-  - Skills: task-finish-contract, blocker-min-input, powershell-safe-chain, gateway-token-doctor, model-route-guard
-  - Scheduled: 2026-03-01 04:04 (Cron: 037018ec-1d96-4d73-b227-c3276ae2ff39)
-  - Status: AUTO-SCHEDULED (rate limit reset)
+- [ ] **Serial Publish #1-10** - 10 skills, 2-minute intervals
+  - Skills: task-finish-contract, blocker-min-input, powershell-safe-chain, gateway-token-doctor, model-route-guard, evidence-url-verifier, clawhub-web-only-publish, memory-to-skill-crystallizer, weekly-self-improve-loop, prepublish-privacy-scrub
+  - Schedule: 03:57, 03:59, 04:01, 04:03, 04:05, 04:07, 04:09, 04:11, 04:13, 04:15
+  - Status: 10 cron jobs scheduled (see memory/publish-queue-2026-03-01.md for job IDs)
   - Done Criteria:
-    - [ ] All 5 skills return "OK. Published"
+    - [ ] All 10 skills return "OK. Published"
     - [ ] skill_id recorded for each
     - [ ] URLs verified accessible
-    - [ ] Results logged to memory/publish-queue-2026-03-01.md
-
-- [ ] **Batch B Publish (Last 5 Skills)** - AUTO at 05:04
-  - Skills: evidence-url-verifier, clawhub-web-only-publish, memory-to-skill-crystallizer, weekly-self-improve-loop, prepublish-privacy-scrub
-  - Scheduled: 2026-03-01 05:04 (Cron: 8aba8e9b-394c-4537-aabe-d7af78af0c1a)
-  - Done Criteria:
-    - [ ] All 5 skills return "OK. Published"
-    - [ ] skill_id recorded for each
-    - [ ] URLs verified accessible
-    - [ ] Results logged to memory/publish-queue-2026-03-01.md
+    - [ ] Attempt log updated in memory/publish-queue-2026-03-01.md
 
 ---
 
