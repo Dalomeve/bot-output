@@ -1,6 +1,6 @@
----
+﻿---
 name: 任务收尾器
-version: 1.0.1
+version: 1.0.2
 description: 强制任务收尾与证据提交。确保每个任务都有明确的目标、进度、下一步和完成证据。
 ---
 
@@ -74,11 +74,11 @@ description: 强制任务收尾与证据提交。确保每个任务都有明确�
 
 | 标准 | 验证 |
 |------|------|
-| 目标已陈述 | `Select-String "目标" memory/{date}.md` 匹配 |
-| 进度已追踪 | `Select-String "进度" memory/{date}.md` 匹配 |
-| 下一步已定义 | `Select-String "下一步" memory/{date}.md` 匹配 |
+| 目标已陈述 | Select-String "目标" memory/{date}.md 匹配 |
+| 进度已追踪 | Select-String "进度" memory/{date}.md 匹配 |
+| 下一步已定义 | Select-String "下一步" memory/{date}.md 匹配 |
 | 证据存在 | 工件路径/URL 存在 |
-| 无未解决标记 | `Select-String "TODO|PENDING|TBD" artifact` 无返回 |
+| 无未解决标记 | Select-String "TODO|PENDING|TBD" artifact 无返回 |
 
 ## 使用示例
 
