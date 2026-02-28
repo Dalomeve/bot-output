@@ -81,7 +81,7 @@ Test-PrivacyScan -path $skillPath
 
 ### Morning (Session Start)
 1. Read `memory/2026-03-01.md` for any blockers
-2. If blocker found → apply `blocker-min-input`
+2. If blocker found -> apply `blocker-min-input`
 3. Check `tasks/QUEUE.md` for pending items
 4. Apply `task-finish-contract` to first task
 
@@ -97,7 +97,7 @@ Test-PrivacyScan -path $skillPath
 
 ### End of Day
 1. Append lessons to `memory/2026-03-02.md`
-2. If pattern repeated → `memory-to-skill-crystallizer`
+2. If pattern repeated -> `memory-to-skill-crystallizer`
 
 ### Sunday (Weekly)
 1. Run `weekly-self-improve-loop`
@@ -114,7 +114,7 @@ Test-PrivacyScan -path $skillPath
 - [ ] Evidence URLs verified before complete
 - [ ] Privacy scan before any publish
 - [ ] Web-only publish (no CLI login)
-- [ ] Repeated patterns → new skills
+- [ ] Repeated patterns -> new skills
 - [ ] Weekly review executed
 
 ---
