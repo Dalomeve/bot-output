@@ -10,6 +10,7 @@ Centralized index of all bot task outputs organized by date.
 | openclaw-growth-pack | [`skills/openclaw-growth-pack/`](https://github.com/Dalomeve/bot-output/tree/main/skills/openclaw-growth-pack) | OpenClaw Launchpad setup: stable model routing, token consistency, anti-stall execution, and autonomy baseline |
 | evidence-link-auditor | [`skills/evidence-link-auditor/`](https://github.com/Dalomeve/bot-output/tree/main/skills/evidence-link-auditor) | Automated audit of evidence links and unresolved markers in task outputs |
 | memory-self-heal | [`skills/memory-self-heal/`](https://github.com/Dalomeve/bot-output/tree/main/skills/memory-self-heal) | Auto-diagnose and recover from repeated friction patterns using memory-driven self-improvement |
+| phoenix-loop | [`skills/phoenix-loop/`](https://github.com/Dalomeve/bot-output/tree/main/skills/phoenix-loop) | Turn agent failures into permanent improvements: auto-diagnose blockers, extract reusable patterns, create local recovery skills |
 
 ## Outputs
 
