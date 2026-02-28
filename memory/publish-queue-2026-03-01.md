@@ -1,7 +1,7 @@
 # Publish Queue: 10 Execution Reliability Skills
 
 **Created**: 2026-03-01 03:25
-**Last Updated**: 2026-03-01 03:55
+**Last Updated**: 2026-03-01 03:58
 **Reason**: ClawHub rate limit (max 5 new skills per hour)
 **Strategy**: Serial publishing - 1 skill every 2 minutes
 
@@ -11,7 +11,7 @@
 
 | # | Skill | Slug | Version | Status | Scheduled Time |
 |---|-------|------|---------|--------|----------------|
-| 1 | task-finish-contract | task-finish-contract | 1.0.0 | ⏳ Queued | 03:57 |
+| 1 | task-finish-contract | task-finish-contract | 1.0.0 | ❌ Failed (Rate Limit) | 03:57 |
 | 2 | blocker-min-input | blocker-min-input | 1.0.0 | ⏳ Queued | 03:59 |
 | 3 | powershell-safe-chain | powershell-safe-chain | 1.0.0 | ⏳ Queued | 04:01 |
 | 4 | gateway-token-doctor | gateway-token-doctor | 1.0.0 | ⏳ Queued | 04:03 |
@@ -45,7 +45,7 @@
 
 | Time | Skill | Result | skill_id | URL | Reason |
 |------|-------|--------|----------|-----|--------|
-| - | - | - | - | - | Queue initialized, awaiting first publish |
+| 03:58 | task-finish-contract | ❌ FAILED | - | - | Rate limit active (max 5/hour) |
 
 ---
 
