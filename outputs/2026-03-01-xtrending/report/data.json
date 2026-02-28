@@ -1,0 +1,89 @@
+{
+  "reportMetadata": {
+    "title": "X Trending Crypto Today",
+    "date": "2026-03-01",
+    "timezone": "Asia/Shanghai",
+    "collectionWindow": "24 hours",
+    "generatedAt": "2026-02-28T17:05:00Z",
+    "dataSource": "X (Twitter) via r.jina.ai verification"
+  },
+  "trendingPosts": [
+    {
+      "rank": 1,
+      "topic": "Amazon/OpenAI $50B Deal",
+      "x_url": "https://x.com/CoinDesk/status/2027386976161136831",
+      "jina_verify_url": "https://r.jina.ai/http://x.com/CoinDesk/status/2027386976161136831",
+      "title_excerpt": "Today: @Amazon just committed $50B to @OpenAI. $15B upfront. $35B to follow. Part of a $110B funding round valuing OpenAI at $730B.",
+      "trend_note": "Major tech investment impacts crypto market sentiment - AI/crypto convergence narrative",
+      "verified_at": "2026-02-28T17:05:14Z",
+      "published": "2026-02-27T14:14:00Z",
+      "engagement": "111.1K views",
+      "author": "@CoinDesk"
+    },
+    {
+      "rank": 2,
+      "topic": "SEC Chair Crypto Regulation",
+      "x_url": "https://x.com/CoinDesk/status/2027759953633575014",
+      "jina_verify_url": "https://r.jina.ai/http://x.com/CoinDesk/status/2027759953633575014",
+      "title_excerpt": "Latest: SEC Chair Paul Atkins called crypto regulation under Gary Gensler a 'big missed opportunity for the United States', and says the agency is now racing to make up for lost time.",
+      "trend_note": "Regulatory policy shift under new SEC leadership - major implications for crypto industry",
+      "verified_at": "2026-02-28T17:05:21Z",
+      "published": "2026-02-28T14:57:00Z",
+      "engagement": "20.1K views",
+      "author": "@CoinDesk"
+    },
+    {
+      "rank": 3,
+      "topic": "Bitcoin Funding Rates Analysis",
+      "x_url": "https://x.com/CoinDesk/status/2027726367928754368",
+      "jina_verify_url": "https://r.jina.ai/http://x.com/CoinDesk/status/2027726367928754368",
+      "title_excerpt": "Analysis: $BTC funding rates just dropped to -6%, matching the most negative level in 3 months, a sign traders are aggressively shorting. Last time rates were this negative was Feb. 6, when Bitcoin bottomed near $60,000.",
+      "trend_note": "Critical sentiment indicator - negative funding rates suggest potential bottom formation near $60K",
+      "verified_at": "2026-02-28T17:05:29Z",
+      "published": "2026-02-28T12:43:00Z",
+      "engagement": "20.5K views",
+      "author": "@CoinDesk"
+    },
+    {
+      "rank": 4,
+      "topic": "Bitcoin ETF Record Inflows",
+      "x_url": "https://x.com/CoinDesk/status/2027709042638889399",
+      "jina_verify_url": "https://r.jina.ai/http://x.com/CoinDesk/status/2027709042638889399",
+      "title_excerpt": "Markets: U.S. spot Bitcoin ETFs are on track for their biggest week in 6, pulling in $1.1B in net inflows over three straight days with BlackRock's $IBIT accounting for more than half, per @SoSoValue.",
+      "trend_note": "Institutional adoption momentum - BlackRock IBIT leads inflows, largest weekly inflow in 6 weeks",
+      "verified_at": "2026-02-28T17:05:42Z",
+      "published": "2026-02-28T11:34:00Z",
+      "engagement": "12.2K views",
+      "author": "@CoinDesk"
+    },
+    {
+      "rank": 5,
+      "topic": "State of Crypto Policy",
+      "x_url": "https://x.com/CoinDesk/status/2027510062038847517",
+      "jina_verify_url": "https://r.jina.ai/http://x.com/CoinDesk/status/2027510062038847517",
+      "title_excerpt": "Stay ahead of the policies shaping crypto's future. State of Crypto, presented by @Hex_Trust.",
+      "trend_note": "Regulatory framework discussions - policy clarity driving institutional interest",
+      "verified_at": "2026-02-28T17:05:49Z",
+      "published": "2026-02-27T22:24:00Z",
+      "engagement": "8,975 views",
+      "author": "@CoinDesk"
+    }
+  ],
+  "marketOverview": [
+    {"rank": 1, "symbol": "BTC", "name": "Bitcoin", "price": 65175, "change24h": -0.84, "marketCap": "1.3T"},
+    {"rank": 2, "symbol": "ETH", "name": "Ethereum", "price": 1909, "change24h": -1.29, "marketCap": "230.36B"},
+    {"rank": 3, "symbol": "USDT", "name": "Tether", "price": 1.00, "change24h": 0.01, "marketCap": "183.59B"},
+    {"rank": 4, "symbol": "BNB", "name": "BNB", "price": 603, "change24h": -1.5, "marketCap": "82.29B"},
+    {"rank": 5, "symbol": "XRP", "name": "XRP", "price": 1.32, "change24h": -2.25, "marketCap": "80.87B"},
+    {"rank": 7, "symbol": "SOL", "name": "Solana", "price": 81.22, "change24h": -0.5, "marketCap": "46.26B"},
+    {"rank": 9, "symbol": "DOGE", "name": "Dogecoin", "price": 0.09, "change24h": -3.41, "marketCap": "15.33B"}
+  ],
+  "verification": {
+    "method": "r.jina.ai HTTP proxy",
+    "allPostsVerified": true,
+    "verificationTimestamp": "2026-02-28T17:05:00Z",
+    "sourceAccount": "@CoinDesk",
+    "postsCount": 5,
+    "verificationReport": "report/verification.md"
+  }
+}
