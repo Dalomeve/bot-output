@@ -43,6 +43,22 @@
     - [ ] Next day's work planned
   - Heartbeat Priority: Check daily progress
 
+- [ ] **ClawHub Skill Intelligence Loop** (Long-Running)
+  - Repository: https://github.com/Dalomeve/bot-output (skills/)
+  - Status: Active (No endpoint)
+  - Cycle Requirements:
+    - [ ] Evaluate 8+ ClawHub skills per cycle
+    - [ ] Score: Utility/Safety/Maintainability/Relevance
+    - [ ] Auto-reject high-risk (download-execute, unknown author)
+    - [ ] Update allowlist in memory/clawhub-skill-intel.md
+    - [ ] Create 1+ glue skill per cycle
+  - Done Criteria (Per Cycle):
+    - [ ] 8+ skills evaluated with scores
+    - [ ] Allowlist/reject-list updated
+    - [ ] 1+ glue skill created and committed
+    - [ ] Integration map updated
+  - Heartbeat Priority: Check cycle progress
+
 ---
 
 ## Long-Running Goals
@@ -50,6 +66,7 @@
 | Goal | Started | Last Activity | Streak |
 |------|---------|---------------|--------|
 | Agent Audit Trail Expansion | 2026-03-01 | 2026-03-01 (Day 1) | 1 day |
+| ClawHub Skill Intelligence | 2026-03-01 | 2026-03-01 (Cycle 1) | 1 cycle |
 
 ---
 
