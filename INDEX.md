@@ -2,6 +2,12 @@
 
 Centralized index of all bot task outputs organized by date.
 
+## Skills
+
+| Skill | Location | Description |
+|-------|----------|-------------|
+| evidence-link-auditor | [`skills/evidence-link-auditor/`](https://github.com/Dalomeve/bot-output/tree/main/skills/evidence-link-auditor) | Automated audit of evidence links and unresolved markers in task outputs |
+
 ## Outputs
 
 | Date | Project Name | Subdirectory | Original Repository | Verification |
