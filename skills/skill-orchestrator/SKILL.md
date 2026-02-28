@@ -96,10 +96,10 @@ Integration Status:
 
 | Source | Target | Status | Last Updated |
 |--------|--------|--------|--------------|
-| self-improving-agent | phoenix-loop | 📋 Planned | 2026-03-01 |
-| ontology | agent-audit-trail | 📋 Planned | 2026-03-01 |
-| proactive-agent | HEARTBEAT | 📋 Planned | 2026-03-01 |
-| auto-updater | weekly-self-improve-loop | 📋 Planned | 2026-03-01 |
+| self-improving-agent | phoenix-loop | [PLAN] Planned | 2026-03-01 |
+| ontology | agent-audit-trail | [PLAN] Planned | 2026-03-01 |
+| proactive-agent | HEARTBEAT | [PLAN] Planned | 2026-03-01 |
+| auto-updater | weekly-self-improve-loop | [PLAN] Planned | 2026-03-01 |
 ```
 
 ## CLI Commands

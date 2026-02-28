@@ -4,7 +4,7 @@ version: 1.0.0
 description: Auto-diagnose and recover from repeated friction patterns using memory-driven self-improvement.
 metadata:
   openclaw:
-    emoji: "🔄"
+    emoji: "[LOOP]"
     category: resilience
 ---
 

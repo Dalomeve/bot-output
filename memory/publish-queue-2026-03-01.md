@@ -11,21 +11,21 @@
 
 | # | Skill | Slug | Version | Status |
 |---|-------|------|---------|--------|
-| 1 | task-finish-contract | task-finish-contract | 1.0.0 | ⏳ Pending |
-| 2 | blocker-min-input | blocker-min-input | 1.0.0 | ⏳ Pending |
-| 3 | powershell-safe-chain | powershell-safe-chain | 1.0.0 | ⏳ Pending |
-| 4 | gateway-token-doctor | gateway-token-doctor | 1.0.0 | ⏳ Pending |
-| 5 | model-route-guard | model-route-guard | 1.0.0 | ⏳ Pending |
+| 1 | task-finish-contract | task-finish-contract | 1.0.0 | [WAIT] Pending |
+| 2 | blocker-min-input | blocker-min-input | 1.0.0 | [WAIT] Pending |
+| 3 | powershell-safe-chain | powershell-safe-chain | 1.0.0 | [WAIT] Pending |
+| 4 | gateway-token-doctor | gateway-token-doctor | 1.0.0 | [WAIT] Pending |
+| 5 | model-route-guard | model-route-guard | 1.0.0 | [WAIT] Pending |
 
 ### Batch B (Last 5) - Publish After 05:00
 
 | # | Skill | Slug | Version | Status |
 |---|-------|------|---------|--------|
-| 6 | evidence-url-verifier | evidence-url-verifier | 1.0.0 | ⏳ Pending |
-| 7 | clawhub-web-only-publish | clawhub-web-only-publish | 1.0.0 | ⏳ Pending |
-| 8 | memory-to-skill-crystallizer | memory-to-skill-crystallizer | 1.0.0 | ⏳ Pending |
-| 9 | weekly-self-improve-loop | weekly-self-improve-loop | 1.0.0 | ⏳ Pending |
-| 10 | prepublish-privacy-scrub | prepublish-privacy-scrub | 1.0.0 | ⏳ Pending |
+| 6 | evidence-url-verifier | evidence-url-verifier | 1.0.0 | [WAIT] Pending |
+| 7 | clawhub-web-only-publish | clawhub-web-only-publish | 1.0.0 | [WAIT] Pending |
+| 8 | memory-to-skill-crystallizer | memory-to-skill-crystallizer | 1.0.0 | [WAIT] Pending |
+| 9 | weekly-self-improve-loop | weekly-self-improve-loop | 1.0.0 | [WAIT] Pending |
+| 10 | prepublish-privacy-scrub | prepublish-privacy-scrub | 1.0.0 | [WAIT] Pending |
 
 ---
 

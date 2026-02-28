@@ -32,18 +32,18 @@ Continuously discover, evaluate, and integrate high-quality ClawHub skills that 
 
 | # | Skill | Author | Downloads | Stars | Versions | Score | Decision |
 |---|-------|--------|-----------|-------|----------|-------|----------|
-| 1 | ontology | @oswalpalash | 88.7k | 202 | 3 | 85 | ✅ Allowlist |
-| 2 | self-improving-agent | @pskoett | 78.5k | 931 | 12 | 88 | ✅ Allowlist |
-| 3 | proactive-agent | @halthelobster | 45.6k | 294 | 11 | 82 | ✅ Allowlist |
-| 4 | find-skills | @JimLiuxinghai | 64k | 265 | 1 | 75 | ✅ Allowlist |
-| 5 | auto-updater | @maximeprades | 22.4k | 155 | 1 | 78 | ✅ Allowlist |
-| 6 | summarize | @steipete | 61k | 287 | 1 | 72 | ⏳ Review |
-| 7 | brave-search | @steipete | 23.5k | 101 | 2 | 68 | ❌ Reject (we have API issue) |
-| 8 | github | @steipete | 57.3k | 192 | 1 | 65 | ❌ Reject (we have gh CLI) |
-| 9 | weather | @steipete | 48.4k | 165 | 1 | 60 | ❌ Reject (we have this) |
-| 10 | agent-browser | @TheSethRose | 57.4k | 299 | 2 | 55 | ❌ Reject (we have browser tool) |
-| 11 | humanize-ai-text | @moltbro | 23.9k | 95 | 2 | 45 | ❌ Reject (ethics concern) |
-| 12 | api-gateway | @byungkyu | 29.9k | 138 | 55 | 50 | ❌ Reject (OAuth complexity) |
+| 1 | ontology | @oswalpalash | 88.7k | 202 | 3 | 85 | [OK] Allowlist |
+| 2 | self-improving-agent | @pskoett | 78.5k | 931 | 12 | 88 | [OK] Allowlist |
+| 3 | proactive-agent | @halthelobster | 45.6k | 294 | 11 | 82 | [OK] Allowlist |
+| 4 | find-skills | @JimLiuxinghai | 64k | 265 | 1 | 75 | [OK] Allowlist |
+| 5 | auto-updater | @maximeprades | 22.4k | 155 | 1 | 78 | [OK] Allowlist |
+| 6 | summarize | @steipete | 61k | 287 | 1 | 72 | [WAIT] Review |
+| 7 | brave-search | @steipete | 23.5k | 101 | 2 | 68 | [NO] Reject (we have API issue) |
+| 8 | github | @steipete | 57.3k | 192 | 1 | 65 | [NO] Reject (we have gh CLI) |
+| 9 | weather | @steipete | 48.4k | 165 | 1 | 60 | [NO] Reject (we have this) |
+| 10 | agent-browser | @TheSethRose | 57.4k | 299 | 2 | 55 | [NO] Reject (we have browser tool) |
+| 11 | humanize-ai-text | @moltbro | 23.9k | 95 | 2 | 45 | [NO] Reject (ethics concern) |
+| 12 | api-gateway | @byungkyu | 29.9k | 138 | 55 | 50 | [NO] Reject (OAuth complexity) |
 
 ### Scoring Details (Top 5)
 
@@ -88,11 +88,11 @@ Continuously discover, evaluate, and integrate high-quality ClawHub skills that 
 
 | Skill | Added | Purpose | Integration Status |
 |-------|-------|---------|-------------------|
-| self-improving-agent | 2026-03-01 | Pattern reference for phoenix-loop | 📋 Planned |
-| ontology | 2026-03-01 | Structured memory for audit trails | 📋 Planned |
-| proactive-agent | 2026-03-01 | Autonomy patterns for HEARTBEAT | 📋 Planned |
-| auto-updater | 2026-03-01 | Cron-based skill maintenance | 📋 Planned |
-| find-skills | 2026-03-01 | Discovery patterns | 📋 Planned |
+| self-improving-agent | 2026-03-01 | Pattern reference for phoenix-loop | [PLAN] Planned |
+| ontology | 2026-03-01 | Structured memory for audit trails | [PLAN] Planned |
+| proactive-agent | 2026-03-01 | Autonomy patterns for HEARTBEAT | [PLAN] Planned |
+| auto-updater | 2026-03-01 | Cron-based skill maintenance | [PLAN] Planned |
+| find-skills | 2026-03-01 | Discovery patterns | [PLAN] Planned |
 
 ---
 

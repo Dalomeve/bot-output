@@ -134,10 +134,10 @@ openclaw skill evidence-link-auditor --target ./outputs/2026-03-01 --github-only
 **GitHub Links Checked**: 24
 
 ### Link Types
-- Commit links: 12 ✓
-- PR links: 6 ✓
-- Issue links: 4 ✓
-- Repository links: 2 ✓
+- Commit links: 12 [OK]
+- PR links: 6 [OK]
+- Issue links: 4 [OK]
+- Repository links: 2 [OK]
 
 ### Verification Details
 All commit hashes exist in respective repositories.
