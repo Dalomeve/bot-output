@@ -1,0 +1,94 @@
+# Weekly Autonomy Retro: 2026-03-01
+
+**Report Period:** 2026-03-01 to 2026-03-02  
+**Generated:** 2026-03-02 00:08 (Asia/Shanghai)
+
+---
+
+## Metrics Summary
+
+| Metric | Value | Calculation |
+|--------|-------|-------------|
+| **Completion Rate** | 100% | 6 pass / 6 total attempts |
+| **Blocker Rate** | 0% | 0 failures / 6 total attempts |
+| **Evidence Quality** | 100% | 6/6 attempts have valid evidence URLs |
+
+### Attempt Breakdown
+
+| Date | Task | Attempt | Result | Evidence |
+|------|------|---------|--------|----------|
+| 2026-03-01 | A | 1 | ✅ pass | [task-a-attempt1.md](https://github.com/Dalomeve/bot-output/blob/main/outputs/2026-03-01-self-evolution/task-a-attempt1.md) |
+| 2026-03-01 | A | 2 | ✅ pass | [task-a-attempt2.md](https://github.com/Dalomeve/bot-output/blob/main/outputs/2026-03-01-self-evolution/task-a-attempt2.md) |
+| 2026-03-01 | B | 1 | ✅ pass | [task-b-attempt1.md](https://github.com/Dalomeve/bot-output/blob/main/outputs/2026-03-01-self-evolution/task-b-attempt1.md) |
+| 2026-03-01 | C | 1 | ✅ pass | [verification.md](https://github.com/Dalomeve/bot-output/blob/main/outputs/2026-03-01-xtrending/report/verification.md) |
+| 2026-03-02 | Daily Evidence Audit | 1 | ✅ pass | [evidence-audit.md](https://github.com/Dalomeve/bot-output/blob/main/outputs/2026-03-01-qa/evidence-audit.md) |
+
+---
+
+## Top 3 Regressions
+
+1. **PowerShell Argument Splitting** (Task B, Attempt 1)
+   - **Issue:** Command arguments were split incorrectly when using bash-style syntax
+   - **Impact:** Required retry with corrected PowerShell-native syntax
+   - **Root Cause:** Using bash-style flags (`-s`, `-la`, `-rf`) instead of PowerShell cmdlet parameters
+
+2. **File Existence Verification Gap** (Task A, Attempt 1)
+   - **Issue:** Artifact creation claimed without explicit directory listing verification
+   - **Impact:** Required second attempt with proper verification
+   - **Root Cause:** Missing explicit `Get-ChildItem` verification before claiming completion
+
+3. **Evidence Freshness Risk** (Task C, Attempt 1)
+   - **Issue:** Incremental updates lacked fresh verification evidence
+   - **Impact:** Risk of cosmetic changes without substantive proof
+   - **Root Cause:** Missing timestamps, status codes, or content excerpts in verification
+
+---
+
+## Top 3 Improvements
+
+1. **PowerShell Native Cmdlet Adoption**
+   - **Rule:** Always use native PowerShell cmdlets with explicit parameter names on Windows
+   - **Benefit:** Eliminates argument parsing errors and improves cross-shell compatibility
+   - **Adoption:** Applied in Task B retry and subsequent tasks
+
+2. **Explicit Verification in Artifacts**
+   - **Rule:** Incorporate explicit verification command output in artifact files
+   - **Benefit:** Provides auditable evidence of task completion
+   - **Adoption:** Task A Attempt 2 and Daily Evidence Audit include verification output
+
+3. **Evidence Link Validation**
+   - **Rule:** Auditor script validates external link format, internal link resolution (with bot-output/ fallback), and excludes documentation references to markers in backticks
+   - **Benefit:** Ensures all evidence URLs are resolvable and meaningful
+   - **Adoption:** Daily Evidence Audit now runs automated validation
+
+---
+
+## Next Week Plan (2026-03-02 to 2026-03-08)
+
+| Priority | Action | Owner | Success Criteria |
+|----------|--------|-------|------------------|
+| **P0** | Enforce PowerShell-native command pattern in all new tasks | Autonomy Agent | Zero bash-style flag errors in SCOREBOARD |
+| **P0** | Add pre-commit verification step for all artifact claims | Autonomy Agent | 100% of tasks include `Get-ChildItem` or equivalent verification |
+| **P1** | Extend evidence auditor to check timestamp freshness | Autonomy Agent | All evidence links include timestamps within 24h of task completion |
+| **P1** | Create reusable skill for PowerShell-safe-chain pattern | Autonomy Agent | Skill published to `skills/local/powershell-safe-chain/` |
+| **P2** | Automate weekly retro generation from SCOREBOARD.md | Autonomy Agent | Retro report generated automatically every Monday 00:00 |
+
+---
+
+## Lessons Crystallized
+
+| Lesson | Reusable Rule | Skill Candidate |
+|--------|---------------|-----------------|
+| PowerShell argument splitting | Always use native PowerShell cmdlets with explicit parameter names on Windows; avoid bash-style flags | `powershell-safe-chain` (existing) |
+| File existence verification | Always verify file existence with explicit directory listing before claiming artifact creation | `task-finish-contract` (existing) |
+| Evidence freshness | Incremental updates must include fresh verification evidence (timestamps, status codes, content excerpts) | `evidence-url-verifier` (existing) |
+
+---
+
+## Appendix: Scoreboard Source
+
+This report was generated from [`bot-output/ops/self-evolution/SCOREBOARD.md`](https://github.com/Dalomeve/bot-output/blob/main/ops/self-evolution/SCOREBOARD.md).
+
+---
+
+*Auto-generated by weekly-autonomy-retro cron job.*
