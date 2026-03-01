@@ -102,6 +102,24 @@ DRIFT_CHECK
 - Fix applied: <none|what changed>
 ```
 
+
+## Done Criteria
+
+Anchor-guard work is complete only if all are true:
+- At least one active anchor is persisted with valid schema fields
+- Current plan has been compared against active anchors
+- Any detected drift has either been corrected or explicitly paused for user confirmation
+- Response includes `ANCHORS_ACTIVE`, `PLAN_GUARD`, and `DRIFT_CHECK` blocks
+
+Minimal completion block:
+
+```markdown
+DONE_CHECKLIST
+- Anchors persisted: yes/no
+- Drift check executed: yes/no
+- Conflicts corrected: yes/no
+- Remaining blocker: none | <exact unblock input>
+```
 ## Safety Boundaries
 
 - Never store tokens, API keys, passwords, cookies, or auth headers
@@ -126,3 +144,4 @@ DRIFT_CHECK
 - Pair with `memory-self-heal` for retry/fallback after drift correction
 - Pair with `task-execution-guard` to enforce anchor checks at each milestone
 - Keep this skill deterministic and concise; avoid free-form interpretation when conflict exists
+
