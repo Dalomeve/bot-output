@@ -1,174 +1,118 @@
----
+﻿---
 name: phoenix-loop
-description: Turn agent failures into permanent improvements. Auto-diagnose blocked tasks, extract lessons, and wire them into reusable skills. Privacy-first: all data stays local.
+description: Turn repeated failures into reusable recovery procedures. Use when the same blocker recurs (>=2 times), tasks stall, or recovery steps are missing; produce a validated playbook entry and only promote to a new skill after proven success.
 ---
 
 # Phoenix Loop
 
-Rise from failures. Complete tasks persistently.
-
-When the agent encounters blockers, failures, or repeated friction, this skill starts a self-healing loop: Diagnose -> Extract -> Crystallize -> Verify.
-
-## Core Mechanism
-
-### 1. Diagnose
-
-```powershell
-# Read recent blocked items
-Get-Content memory/blocked-items.md | Select-String "Blocker" -Context 3
-
-# Extract failure patterns
-Get-Content memory/tasks.md | Select-String "Status: failed" -Context 5
-```
-
-**Diagnosis Checklist**:
-- [ ] Is the failure cause clearly stated?
-- [ ] Were at least 2 solution paths attempted?
-- [ ] Is minimum unblock input defined?
-
-### 2. Extract
-
-Extract reusable patterns from failures:
-
-```markdown
-## Failure Pattern: {pattern_name}
-- Trigger: {when_this_happens}
-- Root Cause: {root_cause}
-- Solution: {fix_steps}
-- Verification: {verification_criteria}
-```
-
-### 3. Crystallize
-
-Write the lesson to a local skill:
-
-```
-skills/local/{pattern_name}-recovery.md
-```
-
-**Skill Template**:
-```markdown
-# {Pattern Name} Recovery
+Convert recurring failures into reliable recovery knowledge without generating low-value skills.
 
 ## Trigger
-When {condition} happens
 
-## Steps
-1. {step_1}
-2. {step_2}
-3. {step_3}
+Run when any condition is true:
+- same failure signature appears 2+ times
+- blocker persists and no successful recovery is recorded
+- user asks to learn from a failed run
 
-## Verification
-- [ ] {check_1}
-- [ ] {check_2}
+## Inputs
 
-## Fallback
-If failed, execute {fallback_action}
-```
+- failure logs (`memory/tasks.md`, `memory/blocked-items.md`, daily memory files)
+- current task context
+- existing skills and playbooks
 
-### 4. Verify
+## Workflow
 
-Next time a similar issue occurs:
-1. Search `skills/local/` for matching skills
-2. Execute recovery steps
-3. Log result to `memory/{date}.md`
-4. Update skill if needed
+### 1) Normalize failure signature
 
-## Privacy Security
+Create one canonical signature:
+- error class (`auth`, `network`, `timeout`, `permission`, `schema`, `unknown`)
+- stable message fragment (redacted)
+- failing step/tool
 
-**All data stored locally**:
-- NO external logging of failure data
-- NO API keys or tokens in skill files
-- NO upload of user task content
-- Only pattern names and solution steps recorded
-- Skills stored in `skills/local/` local directory
+### 2) Check recurrence gate
 
-**Sensitive Data Filter**:
-Before writing to any memory or skill, check and remove:
-- `apiKey`, `token`, `secret`, `password`
-- `Bearer `, `sk-`, `OPENCLAW_`
-- Personal emails, phones, addresses
+Only continue if recurrence >= 2.
+If recurrence < 2, log observation only and stop.
 
-## Executable Completion Criteria
+### 3) Search existing recovery knowledge
 
-A phoenix-loop task is complete if and only if:
+Check in order:
+1. `memory/recovery-playbook.md`
+2. `skills/local/*-recovery/SKILL.md`
+3. relevant workflow skills
 
-| Criteria | Verification Command |
-|----------|---------------------|
-| Failure pattern named | `Select-String "Failure Pattern" memory/blocked-items.md` |
-| Local skill created | `Test-Path skills/local/{name}-recovery.md` |
-| Skill has trigger section | `Select-String "## Trigger" skills/local/{name}.md` |
-| Skill has verification steps | `Select-String "## Verification" skills/local/{name}.md` |
-| Memory updated | `Select-String "phoenix-loop" memory/{today}.md` |
-| Privacy check passed | Skill file contains no `apiKey|token|secret` |
+If matching recovery exists, execute that first instead of creating new content.
 
-## Usage Example
+### 4) Build or update playbook entry
 
-### Scenario: Missing API Key Blocks Task
-
-**1. Diagnose**:
-```
-Blocker: Missing Brave API key
-Attempted: web_search (failed)
-Unblock Input: User runs `openclaw configure --section web`
-```
-
-**2. Extract Pattern**:
-```
-Failure Pattern: missing-api-key
-Trigger: Tool requires unconfigured API key
-Solution: 1. Detect missing key 2. Return config command 3. Provide fallback
-```
-
-**3. Crystallize Skill**:
-```markdown
-# Missing API Key Recovery
-
-## Trigger
-When tool returns "missing_*_api_key" error
-
-## Steps
-1. Extract required key name
-2. Return config command: openclaw configure --section {section}
-3. Provide manual fallback option
-
-## Verification
-- [ ] User receives clear config instructions
-- [ ] At least 1 alternative provided
-```
-
-**4. Verify**:
-Next time an API key issue occurs, auto-apply this skill.
-
-## Heartbeat Integration
-
-Add to `HEARTBEAT.md`:
+Write/update one entry in `memory/recovery-playbook.md`:
 
 ```markdown
-## Self-Check (Every 24 Hours)
-1. Check `memory/blocked-items.md` for blockers older than 24h
-2. Run phoenix-loop diagnosis on each long-term blocker
-3. If reusable pattern found, create or update skill
+## Recovery: <signature-id>
+- Class: <auth|network|...>
+- Trigger: <when this failure appears>
+- Diagnosis: <fast checks>
+- Recovery Steps:
+  1. <step>
+  2. <step>
+  3. <step>
+- Verification:
+  - <check 1>
+  - <check 2>
+- Fallback: <minimum unblock input>
+- LastValidatedAt: <timestamp>
+- SuccessCount: <n>
 ```
 
-## Rollback
+### 5) Validation run
 
-If the skill causes issues:
+Apply recovery to the current case and record result.
 
-```powershell
-# Disable skill (rename)
-Rename-Item skills/local/{name}-recovery.md skills/local/{name}-recovery.md.disabled
+### 6) Promote to skill (strict gate)
 
-# Delete skill
-Remove-Item skills/local/{name}-recovery.md
+Create a standalone skill only if all are true:
+- recurrence >= 2
+- recovery succeeded in at least 2 independent runs
+- steps are deterministic and safe
+- clear trigger boundary exists
+
+Otherwise keep as playbook only.
+
+## Anti-Noise Rules
+
+- Never create a new skill for one-off incidents
+- Never create duplicate skills with tiny wording differences
+- Prefer updating one stable playbook/skill over creating many variants
+
+## Done Criteria
+
+Task is complete only if:
+- normalized failure signature exists
+- recurrence count is documented
+- playbook entry is created or updated
+- validation result is recorded (success/failed with reason)
+- promotion decision is explicit (`promoted` or `playbook-only`)
+
+Required block:
+
+```markdown
+DONE_CHECKLIST
+- Signature: <id>
+- Recurrence: <count>
+- Playbook updated: yes/no (<path>)
+- Validation: success/failed
+- Promotion: skill-created | playbook-only
+- Reason: <why>
 ```
 
-## References
+## Safety
 
-- `memory/blocked-items.md` - Blocker records
-- `memory/tasks.md` - Task history
-- `skills/local/` - Local skill library
+- Redact secrets before logging (`token`, `api_key`, `secret`, `password`, `Bearer`)
+- Do not auto-run destructive remediation steps
+- Do not claim “fixed” without verification output
 
----
+## Integration
 
-Rise stronger from every failure.
+- Use with `memory-self-heal` for retry/fallback loop
+- Use with `task-execution-guard` to enforce evidence before completion
+- Use with `instruction-anchor-guard` to preserve user constraints during recovery
