@@ -1,172 +1,137 @@
----
+﻿---
 name: memory-self-heal
-version: 1.0.0
-description: Auto-diagnose and recover from repeated friction patterns using memory-driven self-improvement.
+version: 1.1.0
+description: General-purpose self-healing loop that learns from past failures, retries safely, and records reusable fixes.
 metadata:
   openclaw:
-    emoji: "[LOOP]"
+    emoji: "[HEAL]"
     category: resilience
 ---
 
 # Memory Self-Heal Skill
 
-Automatically detect, diagnose, and recover from repeated friction patterns by consulting memory before failure escalates.
+Use this skill when the agent starts failing repeatedly, stalls, or keeps asking the user for steps that could be inferred from prior evidence.
 
-## Trigger Conditions
+## Goals
 
-Activate this skill when ANY of these patterns are detected:
+1. Recover execution without user micromanagement
+2. Reuse previous fixes from memory/logs/tasks
+3. Escalate only with minimal unblock input when truly blocked
+4. Leave reusable evidence for future runs
 
-1. **Shell Command Failure** - exec/process tool returns error with syntax mismatch
-2. **Missing Evidence Completion** - Task claims done without DONE_CHECKLIST/EVIDENCE block
-3. **API Key Blocker** - Tool fails with "missing API key" or "unconfigured" error
-4. **Login Wall Detected** - Browser snapshot shows authentication/login required
-5. **Browser Profile Conflict** - Multiple browser sessions causing target confusion
-6. **Context Window Exhausted** - Agent fails with "context window too small" error
+## When To Trigger
 
-## Diagnosis Steps
+Trigger when any of these appear:
+- Same or similar error occurs 2+ times in one task
+- Tool call fails due to argument mismatch, missing config, auth wall, or context overflow
+- Agent claims completion without verifiable artifact
+- Task progress stalls (no new artifact across 2 cycles)
 
-When triggered, execute in order:
+## Inputs
 
-### Step 1: Pattern Match
-Search memory for similar failures in last 7 days:
+- Current task objective
+- Latest error/output
+- Available evidence locations (memory, tasks, logs)
+
+## Portable Evidence Scan Order
+
+Scan these in order; skip missing paths silently:
+1. `memory/` (or equivalent workspace memory path)
+2. `tasks/` or queue files
+3. runtime logs / channel logs
+4. skill docs (`skills/*/SKILL.md`) for known fallback recipes
+5. core docs (`TOOLS.md`, `CAPABILITIES.md`, `AGENTS.md`)
+
+Shell examples (use whichever shell is active):
+
 ```powershell
-# Search memory files for error keywords
-Get-ChildItem memory/*.md | Select-String -Pattern "PowerShell|argument|split|API key|login|browser|context" -Context 2
+# PowerShell
+Get-ChildItem -Recurse memory, tasks -ErrorAction SilentlyContinue |
+  Select-String -Pattern "error|blocked|retry|fallback|auth|token|proxy|timeout|context" -Context 2
 ```
 
-### Step 2: Check Prior Fixes
-For each matched pattern, extract the resolution:
-- Read `memory/tasks.md` for completed tasks with same failure signature
-- Read `memory/blocked-items.md` for documented blockers and unblock inputs
-- Read `memory/YYYY-MM-DD.md` for lessons learned
-
-### Step 3: Classify Failure Type
-Map to known pattern:
-| Pattern | Signature | Prior Fix |
-|---------|-----------|-----------|
-| PowerShell args | `ls -la`, `curl -s` fails | Use `Get-ChildItem`, `Invoke-WebRequest -Uri` |
-| False completion | No DONE_CHECKLIST in response | Require evidence block before marking done |
-| API key missing | `BRAVE_API_KEY`, `unconfigured` | Prompt user: `openclaw configure --section web` |
-| Login wall | Browser shows login form | Switch to `openclaw` profile or request manual attach |
-| Browser conflict | Multiple targetId/profile | Use explicit `profile="openclaw"` or `profile="chrome"` |
-| Context exhausted | "context window too small" | Reduce payload, split task, or increase model context |
-
-## Search Steps
-
-Before asking user, search these locations:
-
-1. **Memory files**: `memory/*.md` for prior failures and fixes
-2. **Task queue**: `tasks/QUEUE.md` for blocked items with unblock instructions
-3. **Capabilities**: `CAPABILITIES.md` for tool limitations
-4. **Tools config**: `TOOLS.md` for approved model routes and keys
-5. **Existing skills**: `skills/*/SKILL.md` for fallback procedures
-
-PowerShell search template:
-```powershell
-# Search all memory for pattern
-$pattern = "API key|PowerShell|login|browser"
-Get-ChildItem memory/*.md | Select-String -Pattern $pattern -Context 3 | 
-  Select-Object Path, LineNumber, Line, Context
+```bash
+# POSIX shell
+rg -n "error|blocked|retry|fallback|auth|token|proxy|timeout|context" memory tasks 2>/dev/null
 ```
 
-## Retry + Fallback Policy
+## Failure Classification
 
-### Primary Retry (Attempt 1)
-- Correct the identified issue based on memory pattern
-- Re-execute with fixed parameters
-- Wait for result
+Classify first, then act:
+- `syntax_or_args`: command syntax/argument mismatch
+- `auth_or_config`: key/token/env/config missing or invalid
+- `network_or_reachability`: timeout, DNS, handshake, region restrictions
+- `ui_login_wall`: page requires manual login/attach
+- `resource_limit`: context window, rate limit, memory pressure
+- `false_done`: no artifact/evidence but reported complete
+- `unknown`: no confident class
 
-### Fallback Path (Attempt 2)
-If primary retry fails:
-1. **Shell failures**: Switch to native PowerShell cmdlets
-2. **API key missing**: Document blocker in `memory/blocked-items.md`, prompt user with exact command
-3. **Login wall**: Switch browser profile or use `web_fetch` as fallback
-4. **Browser conflict**: Explicitly specify `target` and `profile` in browser calls
-5. **Context exhausted**: Split task into sub-agents or reduce scope
+## Recovery Policy (3-Tier)
 
-### Final Fallback (Attempt 3)
-If both fail:
-1. Write detailed blocker to `memory/blocked-items.md` with:
-   - Exact error message
-   - Attempts made (primary + fallback)
-   - Minimum unblock input required
-2. Update `tasks/QUEUE.md` to mark item as Blocked
-3. Report to user with smallest unblock input
+### Attempt 1: Direct Fix
+- Apply best-known fix from memory for same class/signature
+- Re-run the smallest validating action
+- Record result
 
-## Verification Checklist
+### Attempt 2: Safe Fallback
+- Switch to alternate tool/path with lower fragility
+- Narrow scope (smaller input, shorter query, one target)
+- Re-run validation
 
-Before marking recovery complete:
+### Attempt 3: Controlled Escalation
+- Mark blocked with minimum unblock input
+- Provide exact next action user must do (one command or one UI step)
+- Do not loop further until new input arrives
 
-- [ ] Executed at least one concrete retry action
-- [ ] Verified artifact exists (file readable, URL accessible, command succeeded)
-- [ ] No unresolved markers (PENDING, TODO, TBD) in output
-- [ ] Updated `memory/YYYY-MM-DD.md` with lesson learned
-- [ ] If blocker persists, documented in `memory/blocked-items.md` with unblock input
+## Safety Rules
 
-## Logging Template
+- Never auto-run destructive operations without confirmation
+- Never log secrets/tokens in memory files
+- Max 3 retries per blocker signature per task
+- Prefer deterministic steps over broad speculative retries
 
-Append to `memory/YYYY-MM-DD.md` after each self-heal cycle:
+## Completion Contract
+
+Do not claim done unless all are true:
+- At least one artifact exists and is readable (file/link/output)
+- The original task objective is explicitly mapped to artifact(s)
+- No unresolved blocker for current objective
+
+Required output block:
 
 ```markdown
-## YYYY-MM-DD: Self-heal recovery - [Pattern Name]
-- Task: [Brief description]
-- Pattern: [PowerShell args | API key | Login wall | Browser conflict | Context exhausted | False completion]
-- Diagnosis: [What memory search found]
-- Primary Fix: [What was tried first]
-- Fallback: [What was tried second, if applicable]
-- Outcome: [Success | Blocked - requires X]
-- Evidence: [Artifact path, command output, or blocker doc link]
-- Lesson: [One-line rule for future]
+DONE_CHECKLIST
+- Objective met: yes/no
+- Artifact: <path or URL or command output ref>
+- Validation: <what was checked>
+- Remaining blocker: <none or exact unblock input>
 ```
 
-## Concrete Patterns from Memory (2026-02-28 to 2026-03-01)
+## Memory Writeback Template
 
-### Pattern 1: PowerShell Argument Splitting
-**Signature**: `ls -la`, `curl -s`, `grep` flags fail on Windows
-**Memory Evidence**: `memory/2026-02-28-crypto-trends-browser-automati.md` shows bash commands failing
-**Fix**: Use `Get-ChildItem`, `Invoke-WebRequest -Uri`, `Select-String`
-**Verification**: Command returns output without error
+Append one concise entry after each self-heal cycle:
 
-### Pattern 2: False Completion Without Evidence
-**Signature**: Task claims "complete" without DONE_CHECKLIST/EVIDENCE block
-**Memory Evidence**: `memory/tasks.md` shows proper format; violations cause rework
-**Fix**: Require evidence block before marking any multi-step task done
-**Verification**: Response contains DONE_CHECKLIST with EVIDENCE section
+```markdown
+## Self-heal: <date-time> <short task>
+- Signature: <normalized error signature>
+- Class: <classification>
+- Attempt1: <action> -> <result>
+- Attempt2: <action> -> <result>
+- Final: <success | blocked>
+- Artifact/Evidence: <path|url|log ref>
+- Reusable rule: <one-line rule>
+```
 
-### Pattern 3: Missing API Key Blockers
-**Signature**: `web_search` fails with BRAVE_API_KEY missing
-**Memory Evidence**: `memory/blocked-items.md` documents Solana meme coin search blocked
-**Fix**: Prompt user with exact command: `openclaw configure --section web`
-**Verification**: API key configured, web_search succeeds
+## Generic Known Fixes (Seed Set)
 
-### Pattern 4: Login Wall / Browser Auth
-**Signature**: Browser shows login form or requires extension attachment
-**Memory Evidence**: `memory/2026-02-28-browser-control.md` shows Chrome extension attachment requirement
-**Fix**: Use `profile="openclaw"` for isolated browser, or request manual attach for `profile="chrome"`
-**Verification**: Browser snapshot shows target content, not login page
+- Command mismatch on Windows: prefer native PowerShell cmdlets
+- Token mismatch/auth failure: verify active config source and token scope
+- WebSocket/timeouts: test reachability + proxy/no_proxy consistency
+- Context overflow: split task into smaller units and reduce payload
+- False completion: enforce artifact validation before final response
 
-### Pattern 5: Browser Profile Conflict
-**Signature**: Multiple browser sessions (openclaw + chrome) causing target confusion
-**Memory Evidence**: `memory/2026-02-28-browser-control.md` shows conflicts between profiles
-**Fix**: Explicitly specify `profile` and `target` in every browser call
-**Verification**: Browser action succeeds on intended profile
+## Integration Notes
 
-### Pattern 6: Context Window Exhausted
-**Signature**: Agent fails with "context window too small (N tokens). Minimum is 16000"
-**Memory Evidence**: `memory/2026-02-28-crypto-trends-browser-automati.md` shows failure at 1 token
-**Fix**: Reduce payload size, split into sub-agents, or use model with larger context
-**Verification**: Agent completes without context error
-
-## Integration with Heartbeat
-
-On each heartbeat:
-1. Check `memory/blocked-items.md` for items that can now be unblocked
-2. If unblock condition met (e.g., user configured API key), retry blocked task
-3. Log outcome to `memory/YYYY-MM-DD.md`
-
-## Safety Boundaries
-
-- Do not auto-retry destructive operations (deletions, external posts)
-- Do not auto-retry more than 3 times without user input
-- Do not store secrets or credentials in memory files
-- Always document blockers with minimum unblock input
+- Works with autonomy/task-tracker skills but does not depend on them
+- If a project has custom memory paths, adapt scan roots dynamically
+- Keep entries short to avoid memory bloat
