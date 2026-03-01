@@ -1,18 +1,18 @@
 ﻿---
 name: issue-driven-skill-selector
-description: Select high-value skills from real community problems. Use when discovering user pain points from GitHub/issues/forums, and require link-proof validation before ranking or deciding whether to build a skill or file a core issue.
+description: Select high-value fixes from real community problems. Use when discovering user pain points from GitHub/issues/forums, and require link-proof validation before ranking and deciding whether to ship a skill fix, a core code fix, or a hybrid fix.
 ---
 
 # Issue-Driven Skill Selector
 
-Find real, high-frequency problems and decide: build a skill, file a core issue, or do both.
+Find real, high-frequency problems and decide: ship a skill fix, implement a core code fix, or do both.
 
 ## Trigger
 
 Use this skill when:
-- You need a backlog of high-value skill ideas
+- You need a backlog of high-value fixes
 - You want evidence-based prioritization from real community reports
-- You need a decision between skill-layer mitigation vs core-engine fix
+- You must choose between skill-layer mitigation and core-engine patching
 
 ## Inputs
 
@@ -67,11 +67,11 @@ Score 0-10 for each dimension:
 Weighted total:
 `total = impact*1.0 + skill_solvability*1.2 + implementation_cost*0.8 + risk*1.0`
 
-### 4) Route decision
+### 4) Route decision (fix-first)
 
 - `skill-first`: skill_solvability >= 7 and no core code change required
-- `core-first`: skill_solvability <= 4 or requires core protocol/runtime fix
-- `hybrid`: 5-6; ship skill mitigation now, file core issue for long-term fix
+- `core-fix-first`: skill_solvability <= 4 or requires core protocol/runtime fix
+- `hybrid-fix`: 5-6; ship skill mitigation now, then patch core for long-term fix
 
 ### 5) Produce required output blocks
 
@@ -83,8 +83,8 @@ CANDIDATE_TABLE
 
 TOP3_DECISIONS
 - candidate #1 ...
-  - skill plan: name, trigger, done criteria
-  - core issue draft: title + minimal repro
+  - skill fix plan: name, trigger, done criteria
+  - core fix plan: target files, minimal repro, tests, PR scope
 
 EXECUTION_NEXT
 1. next concrete action
@@ -99,8 +99,8 @@ Complete only if all are true:
 - Every candidate link passed Link Proof Gate
 - Every candidate has full scoring fields and route decision
 - Top 3 each include:
-  - skill proposal (`name`, `trigger`, `done criteria`)
-  - core-issue draft (`title`, `minimal repro`)
+  - skill fix proposal (`name`, `trigger`, `done criteria`)
+  - core fix proposal (`target files`, `minimal repro`, `tests`, `PR scope`)
 - Output includes all three blocks: `CANDIDATE_TABLE`, `TOP3_DECISIONS`, `EXECUTION_NEXT`
 
 Required completion block:
@@ -119,8 +119,8 @@ DONE_CHECKLIST
 - Never fabricate links or issue IDs
 - Never include private repo content without explicit access approval
 - Throttle requests to avoid abuse/rate-limit bursts
-- Do not auto-close/report issues without user confirmation
+- Do not auto-open/close/report issues by default; prioritize preparing and shipping fixes
 
 ## Practical rule
 
-If evidence is weak, do not propose a skill. Ask for one more validated source instead.
+If evidence is weak, do not propose a fix path yet. Ask for one more validated source.
