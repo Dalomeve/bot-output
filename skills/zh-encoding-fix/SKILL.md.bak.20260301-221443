@@ -1,4 +1,4 @@
-﻿---
+---
 name: zh-encoding-fix
 description: Detect and repair mojibake in markdown/json/text files, then enforce UTF-8 safe write rules to prevent recurrence.
 ---
@@ -26,9 +26,8 @@ Use this skill when:
 Run a quick scan for suspicious patterns:
 
 ```powershell
-$pattern = '(\\uFFFD|\\u951B|\\u951F|\\u9225|\\u9983|\\u00C3[A-Za-z0-9]|\\u00C2[ -~]|\\u00E2[ -~]|\\u00F0\\u0178)'
 Get-ChildItem -Recurse -File -Include *.md,*.txt,*.json |
-  Select-String -Pattern $pattern
+  Select-String -Pattern '?|�|�|�|�|?[A-Za-z0-9]|?[ -~]|a�[ -~]|e?'
 ```
 
 If no hits, stop and return `ENCODING_OK`.
@@ -41,7 +40,7 @@ Create `.bak.<timestamp>` before any rewrite.
 
 Use `scripts/repair-mojibake.ps1`:
 - For each line, try CP936 bytes -> UTF-8 decode recovery
-- Keep candidate line only if readability score improves and issue markers decrease
+- Keep candidate line only if readability score improves and mojibake markers decrease
 - Preserve original line if confidence is low
 
 ### 4) Validate

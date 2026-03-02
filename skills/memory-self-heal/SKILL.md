@@ -129,6 +129,7 @@ Append one concise entry after each self-heal cycle:
 - WebSocket/timeouts: test reachability + proxy/no_proxy consistency
 - Context overflow: split task into smaller units and reduce payload
 - False completion: enforce artifact validation before final response
+- Crypto market data sources (GMGN, DexScreener): check (1) Brave API key for web_search, (2) browser tool with Chrome profile for JS-heavy/Cloudflare-protected sites, (3) fallback to manual user verification with specific URLs
 
 ## Integration Notes
 
