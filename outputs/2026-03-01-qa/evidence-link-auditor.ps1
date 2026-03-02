@@ -41,6 +41,7 @@ foreach ($file in $mdFiles) {
             Count = $markers.Count
             Markers = ($markers | ForEach-Object { $_.Value }) -join ", "
         }
+        $auditResults.PassFail = "FAIL"
         Write-Host "  [WARN] Unresolved markers in $relativePath : $($markers.Count)" -ForegroundColor Yellow
     }
     
