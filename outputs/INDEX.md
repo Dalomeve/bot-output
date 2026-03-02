@@ -20,12 +20,12 @@
 
 | Audit Date | Report | Status | Issues |
 |------------|--------|--------|--------|
-| 2026-03-02 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ✅ PASS | None |
+| 2026-03-02 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 3 unresolved markers |
 
 **Notes:** 
-- All 55 external links have valid format
+- All 57 external links have valid format
 - All 6 internal links resolve to existing files (via bot-output/ path)
-- No unresolved markers detected
+- 3 unresolved markers (PENDING, TODO, TBD) in `2026-03-02-self-evolution/self-heal-2026-03-02.md`
 
 ---
 
@@ -33,10 +33,11 @@
 
 | Type | Count |
 |------|-------|
-| Markdown Files | 16 |
-| External Links | 55 (all valid format) |
-| Internal Links | 6 (path mismatch) |
+| Markdown Files | 19 |
+| External Links | 57 (all valid format) |
+| Internal Links | 6 (all resolved via bot-output/) |
 | PowerShell Scripts | 1 (auditor) |
+| Unresolved Markers | 3 (in 1 file) |
 
 ---
 
