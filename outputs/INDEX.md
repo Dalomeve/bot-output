@@ -1,6 +1,6 @@
 # Bot Output Index
 
-**Last Updated:** 2026-03-02  
+**Last Updated:** 2026-03-04  
 **Maintained By:** daily-evidence-audit cron
 
 ---
@@ -20,12 +20,15 @@
 
 | Audit Date | Report | Status | Issues |
 |------------|--------|--------|--------|
+| 2026-03-04 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers |
 | 2026-03-02 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 3 unresolved markers |
 
 **Notes:** 
-- All 57 external links have valid format
+- All 58 external links have valid format
 - All 6 internal links resolve to existing files (via bot-output/ path)
-- 3 unresolved markers (PENDING, TODO, TBD) in `2026-03-02-self-evolution/self-heal-2026-03-02.md`
+- 6 unresolved markers (PENDING, TODO, TBD) in 2 files:
+  - `INDEX.md` (3 markers)
+  - `2026-03-02-self-evolution/self-heal-2026-03-02.md` (3 markers)
 
 ---
 
@@ -33,11 +36,11 @@
 
 | Type | Count |
 |------|-------|
-| Markdown Files | 19 |
-| External Links | 57 (all valid format) |
+| Markdown Files | 20 |
+| External Links | 58 (all valid format) |
 | Internal Links | 6 (all resolved via bot-output/) |
 | PowerShell Scripts | 1 (auditor) |
-| Unresolved Markers | 3 (in 1 file) |
+| Unresolved Markers | 6 (in 2 files) |
 
 ---
 
