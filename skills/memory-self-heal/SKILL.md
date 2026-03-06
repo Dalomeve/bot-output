@@ -131,6 +131,7 @@ Append one concise entry after each self-heal cycle:
 - False completion: enforce artifact validation before final response
 - Crypto market data sources (GMGN, DexScreener): check (1) Brave API key for web_search, (2) browser tool with Chrome profile for JS-heavy/Cloudflare-protected sites, (3) fallback to manual user verification with specific URLs
 - **Browser fallback for Cloudflare blocks**: When web_fetch returns 403 Cloudflare error, use `browser` tool with `profile: openclaw` to load JS-heavy sites; snapshot with `refs: aria` to extract structured data
+- **Evidence audit scope rule**: When running marker audits (TODO/TBD/PENDING), scope to current session outputs only (`outputs/YYYY-MM-DD-*`); exclude documentation files (INDEX.md, README.md) and historical session notes older than 7 days to avoid false positives from documentation examples and immutable historical records
 
 ## Integration Notes
 
