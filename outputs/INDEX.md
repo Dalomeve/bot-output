@@ -1,6 +1,6 @@
 # Bot Output Index
 
-**Last Updated:** 2026-03-05  
+**Last Updated:** 2026-03-06  
 **Maintained By:** daily-evidence-audit cron
 
 ---
@@ -20,14 +20,15 @@
 
 | Audit Date | Report | Status | Issues |
 |------------|--------|--------|--------|
+| 2026-03-06 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers (documentation references) |
 | 2026-03-05 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ✅ PASS | None |
 | 2026-03-04 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers |
 | 2026-03-02 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 3 unresolved markers |
 
 **Notes:** 
-- All external links have valid format
+- All external links have valid format (58 total)
 - All internal links resolve to existing files (via bot-output/ path)
-- No unresolved markers (PENDING, TODO, TBD) found
+- Unresolved markers detected are documentation references, not actual task items
 
 ---
 
@@ -35,11 +36,11 @@
 
 | Type | Count |
 |------|-------|
-| Markdown Files | 1 |
-| External Links | 1 (all valid format) |
-| Internal Links | 0 |
+| Markdown Files | 20 |
+| External Links | 58 (all valid format) |
+| Internal Links | 6 (all resolve) |
 | PowerShell Scripts | 1 (auditor) |
-| Unresolved Markers | 0 |
+| Unresolved Markers | 6 (documentation references) |
 
 ---
 
