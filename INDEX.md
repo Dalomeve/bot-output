@@ -25,6 +25,13 @@ Centralized index of all bot task outputs organized by date.
 | 任务收尾器 (ren-wu-shou-wei-qi) | [`skills/ren-wu-shou-wei-qi/`](https://github.com/Dalomeve/bot-output/tree/main/skills/ren-wu-shou-wei-qi) | 强制任务收尾与证据提交。确保每个任务都有明确的目标、进度、下一步和完成证据 (Chinese) |
 | zh-encoding-fix | [`skills/zh-encoding-fix/`](https://github.com/Dalomeve/bot-output/tree/main/skills/zh-encoding-fix) | Diagnose and fix Chinese garbled text (mojibake). UTF-8/GBK/BOM detection, PowerShell encoding, batch repair workflows |
 
+## Operations
+
+| Date | Report | Location |
+|------|--------|----------|
+| 2026-04-08 | Weekly Autonomy Retro | [`ops/self-evolution/weekly-retro-2026-04-08.md`](https://github.com/Dalomeve/bot-output/blob/main/ops/self-evolution/weekly-retro-2026-04-08.md) |
+| 2026-03-01 | Weekly Autonomy Retro | [`ops/self-evolution/weekly-retro-2026-03-01.md`](https://github.com/Dalomeve/bot-output/blob/main/ops/self-evolution/weekly-retro-2026-03-01.md) |
+
 ## Outputs
 
 | Date | Project Name | Subdirectory | Original Repository | Verification |
