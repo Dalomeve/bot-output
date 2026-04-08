@@ -1,6 +1,6 @@
 # Bot Output Index
 
-**Last Updated:** 2026-03-06  
+**Last Updated:** 2026-04-08  
 **Maintained By:** daily-evidence-audit cron
 
 ---
@@ -12,7 +12,12 @@
 | [2026-03-01-xtrending](./2026-03-01-xtrending/) | X (Twitter) trending crypto analysis | 2026-03-01 | ✅ Complete |
 | [2026-03-01-self-evolution](./2026-03-01-self-evolution/) | Agent self-evolution task attempts | 2026-03-01 | ✅ Complete |
 | [skill-intel](./skill-intel/) | Skill intelligence reports and SOPs | 2026-03-01 | ✅ Complete |
-| [2026-03-01-qa](./2026-03-01-qa/) | Quality assurance and audit reports | 2026-03-02 | ✅ Active |
+| [2026-03-02-self-evolution](./2026-03-02-self-evolution/) | Self-heal loop (03-02) | 2026-03-02 | ✅ Complete |
+| [2026-03-04-self-evolution](./2026-03-04-self-evolution/) | Self-heal loop (03-04) | 2026-03-04 | ✅ Complete |
+| [2026-03-06-runtime-check](./2026-03-06-runtime-check/) | Runtime stability check and remediation | 2026-03-06 | ✅ Complete |
+| [2026-03-06-self-evolution](./2026-03-06-self-evolution/) | Self-heal loop (03-06) | 2026-03-06 | ✅ Complete |
+| [2026-03-07-self-evolution](./2026-03-07-self-evolution/) | Self-heal loop (03-07) | 2026-03-07 | ✅ Complete |
+| [2026-03-01-qa](./2026-03-01-qa/) | Quality assurance and audit reports | 2026-04-08 | ✅ Active |
 
 ---
 
@@ -20,7 +25,8 @@
 
 | Audit Date | Report | Status | Issues |
 |------------|--------|--------|--------|
-| 2026-03-06 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers (documentation references) |
+| 2026-04-08 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 9 unresolved markers (3 in self-heal-2026-03-02, 6 in self-heal-2026-03-06) |
+| 2026-03-06 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers |
 | 2026-03-05 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ✅ PASS | None |
 | 2026-03-04 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 6 unresolved markers |
 | 2026-03-02 | [evidence-audit.md](./2026-03-01-qa/evidence-audit.md) | ⚠️ FAIL | 3 unresolved markers |
@@ -28,7 +34,7 @@
 **Notes:** 
 - All external links have valid format (58 total)
 - All internal links resolve to existing files (via bot-output/ path)
-- Unresolved markers detected are documentation references, not actual task items
+- Unresolved markers detected in self-heal notes are session documentation references, not actual task items
 
 ---
 
@@ -36,11 +42,11 @@
 
 | Type | Count |
 |------|-------|
-| Markdown Files | 20 |
+| Markdown Files | 25 |
 | External Links | 58 (all valid format) |
 | Internal Links | 6 (all resolve) |
 | PowerShell Scripts | 1 (auditor) |
-| Unresolved Markers | 6 (documentation references) |
+| Unresolved Markers | 9 (documentation references) |
 
 ---
 
